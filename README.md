@@ -1,12 +1,12 @@
-# :sunny: vueplay 
+# :sunny: vueplay
 
-# :zap: 仓库介绍
+## :zap: 仓库介绍
 
-## :star: 创建目的 
+### :star: 创建目的
 
 为了掌握vue3，自己做着玩滴。
 
-## :book:使用到的框架
+### :book:使用到的框架
 
 1. 开发环境：vsCode
    - Volar
@@ -20,7 +20,7 @@
 7. 路由：[Vue Router](https://router.vuejs.org/zh/)
 8. 网络请求：[Axios](https://www.axios-http.cn/)
 
-## :ocean: 初步计划
+### :ocean: 初步计划
 
 1. 完成界面搭建
 2. 整合Antd和VueRouter，实现路由功能
