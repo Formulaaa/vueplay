@@ -1,53 +1,27 @@
-# vueplay
+# :sunny: vueplay 
 
-This template should help get you started developing with Vue 3 in Vite.
+# :zap: 仓库介绍
 
-## Recommended IDE Setup
+## :star: 创建目的 
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+为了掌握vue3，自己做着玩滴。
 
-## Type Support for `.vue` Imports in TS
+## :book:使用到的框架
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+1. 开发环境：vsCode
+   - Volar
+   - TypeScript Vue Plugin
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+2. 包管理工具：npm
+3. 构建工具：[vite](https://cn.vitejs.dev/)
+4. 语法：[Vue3](https://cn.vuejs.org/)，typescript，less
+5. ui框架：[Ant Design of Vue](https://www.antdv.com/docs/vue/introduce-cn)
+6. 状态管理：[pinia](https://pinia.vuejs.org/)
+7. 路由：[Vue Router](https://router.vuejs.org/zh/)
+8. 网络请求：[Axios](https://www.axios-http.cn/)
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## :ocean: 初步计划
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run build
-npm run test:e2e # or `npm run test:e2e:ci` for headless testing
-```
+1. 完成界面搭建
+2. 整合Antd和VueRouter，实现路由功能
+3. 完成Vue3官网所有示例
