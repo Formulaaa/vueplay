@@ -4,7 +4,7 @@
  * @Author: congsir
  * @Date: 2022-09-14 15:19:12
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-09-14 16:28:48
+ * @LastEditTime: 2022-09-14 16:32:09
 -->
 <template>
   <a-layout-sider theme="light" v-model:collapsed="collapsed" collapsible>
@@ -14,28 +14,28 @@
         <template #title>
           <user-outlined />
           <span>
-            subnav 1
+            基础
           </span>
         </template>
-        <a-menu-item key="1">option1</a-menu-item>
+        <a-menu-item key="1">你好世界</a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="sub2">
         <template #title>
           <laptop-outlined />
           <span>
-            subnav 2
+            实战
           </span>
         </template>
-        <a-menu-item key="5">option5</a-menu-item>
+        <!-- <a-menu-item key="2">option5</a-menu-item> -->
       </a-sub-menu>
       <a-sub-menu key="sub3">
         <template #title>
           <notification-outlined />
           <span>
-            subnav 3
+            7 GUIs
           </span>
         </template>
-        <a-menu-item key="9">option9</a-menu-item>
+        <!-- <a-menu-item key="9">option9</a-menu-item> -->
       </a-sub-menu>
     </a-menu>
     <template #trigger>
