@@ -8,7 +8,7 @@
 
 ### :book:使用到的框架
 
-1. 开发环境：vsCode
+1. 开发环境：VS Code
    - Volar
    - TypeScript Vue Plugin
 
