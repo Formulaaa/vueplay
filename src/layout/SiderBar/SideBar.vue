@@ -4,20 +4,21 @@
  * @Author: congsir
  * @Date: 2022-09-14 15:19:12
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-09-14 16:32:09
+ * @LastEditTime: 2022-09-16 18:26:19
 -->
 <template>
   <a-layout-sider theme="light" v-model:collapsed="collapsed" collapsible>
     <a-menu v-model:selectedKeys="selectedKeys" v-model:openKeys="openKeys" mode="inline" @openChange="onOpenChange"
-      :style="{ height: '100%', borderRight: 0 }">
-      <a-sub-menu key="sub1">
+      :style="{ height: '100%', borderRight: 0 }" @click="clickItem">
+      <a-sub-menu key="/home">
         <template #title>
           <user-outlined />
           <span>
             基础
           </span>
         </template>
-        <a-menu-item key="1">你好世界</a-menu-item>
+        <a-menu-item key="hello-world" >你好，世界</a-menu-item>
+        <a-menu-item key="user-input" >处理用户输入</a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="sub2">
         <template #title>
@@ -56,7 +57,13 @@ import {
   MenuFoldOutlined,
 } from '@ant-design/icons-vue';
 import { ref } from 'vue';
+import { useRouter, useRoute } from 'vue-router'
+const router = useRouter();
 
+
+const clickItem = ({ keyPath }: { keyPath: string[] }) => {
+  router.push(keyPath.join('/'));
+}
 const rootSubmenuKeys = ref<string[]>(['sub1', 'sub2', 'sub3']);
 let collapsed = ref<boolean>(false);
 let selectedKeys = ref<string[]>(['1']);
