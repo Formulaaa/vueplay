@@ -4,13 +4,12 @@
  * @Author: congsir
  * @Date: 2022-09-16 19:03:23
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-09-16 20:54:01
+ * @LastEditTime: 2022-09-17 11:23:44
 -->
 <template>
     <a-sub-menu :key="item.path">
         <template #title>
-            <user-outlined />
-            <slot></slot>
+            <component :is="item.meta.icon"></component>
             <span>
                 {{item.name}}
             </span>
@@ -20,12 +19,8 @@
 </template>
 
 <script setup lang="ts">
-import {
-    UserOutlined,
-} from '@ant-design/icons-vue';
 import SideSubMenuItem from './SideSubMenuItem.vue';
 import { useRouter } from 'vue-router';
-
 const router = useRouter();
 
 const props = defineProps({
@@ -34,6 +29,7 @@ const props = defineProps({
         default: () => ({})
     }
 });
+
 
 </script>
 
