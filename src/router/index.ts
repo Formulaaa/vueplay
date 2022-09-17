@@ -4,7 +4,7 @@
  * @Author: congsir
  * @Date: 2022-09-09 11:52:35
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-09-17 12:07:25
+ * @LastEditTime: 2022-09-17 15:56:29
  */
 import { createRouter, createWebHistory } from "vue-router";
 import HelloWorldVue from "@/views/basic/HelloWorld.vue";
@@ -14,8 +14,8 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      redirect:'/home/hello-world'
+      path: "/",
+      redirect: "/home/hello-world",
     },
     {
       path: "/home",
@@ -33,6 +33,11 @@ const router = createRouter({
           path: "user-input",
           name: "用户输入",
           component: () => import("@/views/basic/UserInput.vue"),
+        },
+        {
+          path: "attr-bind",
+          name: "属性绑定",
+          component: () => import("@/views/basic/AttributeBind.vue"),
         },
       ],
     },

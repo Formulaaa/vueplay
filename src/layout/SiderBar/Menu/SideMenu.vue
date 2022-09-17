@@ -4,7 +4,7 @@
  * @Author: congsir
  * @Date: 2022-09-16 19:02:46
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-09-17 12:21:02
+ * @LastEditTime: 2022-09-17 15:52:15
 -->
 <template>
     <a-menu v-model:selectedKeys="selectedKeys" v-model:openKeys="openKeys" mode="inline"
@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue"
+import { computed } from "vue"
 import { useRouter } from 'vue-router'
 import SideSubMenu from './SideSubMenu.vue'
 // 声明Vue Router的两个对象
