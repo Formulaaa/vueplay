@@ -4,7 +4,7 @@
  * @Author: congsir
  * @Date: 2022-09-09 11:52:35
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-09-17 15:56:29
+ * @LastEditTime: 2022-09-17 17:47:31
  */
 import { createRouter, createWebHistory } from "vue-router";
 import HelloWorldVue from "@/views/basic/HelloWorld.vue";
@@ -38,6 +38,11 @@ const router = createRouter({
           path: "attr-bind",
           name: "属性绑定",
           component: () => import("@/views/basic/AttributeBind.vue"),
+        },
+        {
+          path: "if-for",
+          name: "条件和循环",
+          component: () => import("@/views/basic/IfFor.vue"),
         },
       ],
     },
