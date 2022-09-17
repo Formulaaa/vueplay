@@ -7,7 +7,7 @@
  * @LastEditTime: 2022-09-17 12:21:02
 -->
 <template>
-    <a-menu v-model:selectedKeys="selectedKeys" v-model:openKeys="openKeys" mode="inline" @openChange="onOpenChange"
+    <a-menu v-model:selectedKeys="selectedKeys" v-model:openKeys="openKeys" mode="inline"
         :style="{ height: '100%', borderRight: 0 }" @click="clickItem">
         <template v-for="item of items" :key="item.path">
             <side-sub-menu :item="item" v-if="item.path!='/'"></side-sub-menu>
