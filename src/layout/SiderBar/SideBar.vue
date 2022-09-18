@@ -4,10 +4,11 @@
  * @Author: congsir
  * @Date: 2022-09-14 15:19:12
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-09-16 20:45:22
+ * @LastEditTime: 2022-09-18 11:17:30
 -->
 <template>
-  <a-layout-sider theme="light" v-model:collapsed="collapsed" collapsible>
+  <a-layout-sider theme="light" v-model:collapsed="collapsed" collapsible
+    :style="{position: 'fixed', zIndex: 1,height:'100vh',overflow:'auto'}">
     <side-menu></side-menu>
     <template #trigger>
       <side-trigger :collapsed="collapsed"></side-trigger>

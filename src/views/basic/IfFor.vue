@@ -4,7 +4,7 @@
  * @Author: congsir
  * @Date: 2022-09-17 17:33:38
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-09-17 17:57:53
+ * @LastEditTime: 2022-09-17 18:02:06
 -->
 <template>
     <a-space size="middle">
@@ -24,7 +24,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const show = ref<boolean>(false);
+const show = ref<boolean>(true);
 const list = ref<number[]>([1, 2]);
 function addItem() {
     list.value.push(list.value.length+1);

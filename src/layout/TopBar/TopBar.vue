@@ -4,10 +4,10 @@
  * @Author: congsir
  * @Date: 2022-09-14 15:19:18
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-09-14 15:29:36
+ * @LastEditTime: 2022-09-18 10:54:34
 -->
 <template>
-  <a-layout-header>
+  <a-layout-header :style="{ position: 'fixed', zIndex: 999, width: '100%',lineHeight:'64px'}">
     <div class="title">
       <a-typography-title :level="3" style="color:white">
         <dot-chart-outlined />
