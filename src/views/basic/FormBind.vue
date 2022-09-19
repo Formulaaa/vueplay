@@ -4,7 +4,7 @@
  * @Author: congsir
  * @Date: 2022-09-17 17:59:25
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-09-18 11:25:21
+ * @LastEditTime: 2022-09-18 12:06:41
 -->
 <template>
     <a-form :model="formData" autocomplete="off" name="user-form" ref="formRef" :label-col="{ span: 3}"
@@ -27,6 +27,9 @@
             <a-input-number v-model:value="formData.number" :min="0" :max="100" precision="1" step="0.1">
             </a-input-number>
         </a-form-item>
+        <a-form-item label="时间" name="date" :wrapper-col="{ span: 12 }">
+            <a-range-picker showTime v-model:value="formData.date"></a-range-picker>
+        </a-form-item>
 
         <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
             <a-button type="primary" html-type="submit">提交</a-button>
@@ -38,19 +41,27 @@
 import { UserOutlined } from '@ant-design/icons-vue';
 import { reactive, ref } from 'vue';
 import type { FormInstance } from 'ant-design-vue'
+import type { Dayjs } from 'dayjs'
+import dayjs from 'dayjs';
+dayjs.locale("zhCN")
 // 定义表单接口
 interface Form {
     name: string,
     color: string[],
-    number: number
+    number: number,
+    date: RangeValue | undefined
 }
+// 定义时间类型
+type RangeValue = [Dayjs, Dayjs];
+
 // 获取表单组件
 const formRef = ref<FormInstance>();
 // 定义表单数据
 const formData = reactive<Form>({
     name: '',
     color: [],
-    number: 0
+    number: 0,
+    date: undefined
 });
 
 
