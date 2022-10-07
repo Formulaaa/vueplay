@@ -4,11 +4,11 @@
  * @Author: congsir
  * @Date: 2022-09-17 17:59:25
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-09-18 12:06:41
+ * @LastEditTime: 2022-10-07 23:06:37
 -->
 <template>
     <a-form :model="formData" autocomplete="off" name="user-form" ref="formRef" :label-col="{ span: 3}"
-        :wrapper-col="{ span: 8 }">
+        :wrapper-col="{ span: 8 }" layout="vertical">
         <a-form-item label="姓名" name="name" :rules="[{ required: true, message: '请输入姓名' }]">
             <a-input v-model:value="formData.name" autofocus>
                 <template #prefix>
@@ -31,6 +31,41 @@
             <a-range-picker showTime v-model:value="formData.date"></a-range-picker>
         </a-form-item>
 
+        <a-form-item label="开关" name="switch">
+            <a-switch v-model:checked="formData.switch"></a-switch>
+        </a-form-item>
+
+        <a-form-item label="单选" name="radio">
+            <a-radio-group v-model:value="formData.radio">
+                <a-radio value="1">1</a-radio>
+                <a-radio value="2">2</a-radio>
+                <a-radio value="3">3</a-radio>
+                <a-radio value="4" disabled>4</a-radio>
+            </a-radio-group>
+        </a-form-item>
+
+        <a-form-item label="多选" name="checkbox">
+            <a-checkbox-group v-model:checked="formData.checkbox" :options="options"></a-checkbox-group>
+        </a-form-item>
+
+        <a-form-item label="次级选项" name="cascader">
+            <a-cascader :options="cascaderOptions" v-model:value="formData.cascader"></a-cascader>
+        </a-form-item>
+
+        <a-form-item label="提及@" name="mention">
+            <a-mentions :options="mentionOptions" v-model:value="formData.mention">
+                <!-- <a-mentions-option v-for="men in mentionOptions" :key="men.value" :value="men.value">{{men.label}}</a-mentions-option> -->
+            </a-mentions>
+        </a-form-item>
+
+        <a-form-item label="评分" name="rate">
+            <a-rate v-model:value="formData.rate" allowClear allowHalf>
+                <template #character>
+                    <heart-filled></heart-filled>
+                </template>
+            </a-rate>
+        </a-form-item>
+
         <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
             <a-button type="primary" html-type="submit">提交</a-button>
         </a-form-item>
@@ -38,19 +73,34 @@
 </template>
 
 <script setup lang="ts">
-import { UserOutlined } from '@ant-design/icons-vue';
+import { UserOutlined,HeartFilled } from '@ant-design/icons-vue';
 import { reactive, ref } from 'vue';
-import type { FormInstance } from 'ant-design-vue'
+import type { FormInstance, CascaderProps } from 'ant-design-vue'
 import type { Dayjs } from 'dayjs'
 import dayjs from 'dayjs';
+
+
 dayjs.locale("zhCN")
 // 定义表单接口
 interface Form {
     name: string,
     color: string[],
     number: number,
-    date: RangeValue | undefined
+    date: RangeValue | undefined,
+    switch: boolean,
+    radio: string,
+    checkbox: string[],
+    cascader: string,
+    mention: string,
+    rate: number
 }
+// 定义多选选项数据接口
+interface Options {
+    value: string,
+    label: string,
+    disabled?: boolean
+}
+
 // 定义时间类型
 type RangeValue = [Dayjs, Dayjs];
 
@@ -61,9 +111,82 @@ const formData = reactive<Form>({
     name: '',
     color: [],
     number: 0,
-    date: undefined
+    date: undefined,
+    switch: true,
+    radio: '1',
+    checkbox: [],
+    cascader: '',
+    mention: '',
+    rate: 3
 });
+// 定义多选框
+const options: Options[] = [
+    { label: 'Apple', value: 'Apple' },
+    { label: 'Pear', value: 'Pear' },
+    { label: 'Orange', value: 'Orange', disabled: true },
+];
+// 定义级联选择器
+const cascaderOptions: CascaderProps['options'] = [
+    {
+        value: 'zhejiang',
+        label: 'Zhejiang',
+        children: [
+            {
+                value: 'hangzhou',
+                label: 'Hangzhou',
+                children: [
+                    {
+                        value: 'xihu',
+                        label: 'West Lake',
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        value: 'jiangsu',
+        label: 'Jiangsu',
+        children: [
+            {
+                value: 'nanjing',
+                label: 'Nanjing',
+                children: [
+                    {
+                        value: 'zhonghuamen',
+                        label: 'zhonghuamen'
+                    }]
+            }
+        ]
+    }
+];
 
+// 定义提及@
+const mentionOptions: Options[] = [
+    {
+        value: 'afc163',
+        label: 'afc163',
+    },
+    {
+        value: 'benjycui',
+        label: 'benjycui',
+    },
+    {
+        value: 'yiminghe',
+        label: 'yiminghe',
+    },
+    {
+        value: 'RaoHai',
+        label: 'RaoHai',
+    },
+    {
+        value: '中文',
+        label: '中文',
+    },
+    {
+        value: 'にほんご',
+        label: 'にほんご',
+    },
+]
 
 </script>
 
