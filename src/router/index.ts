@@ -4,7 +4,7 @@
  * @Author: congsir
  * @Date: 2022-09-09 11:52:35
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-10-08 15:31:30
+ * @LastEditTime: 2022-10-08 20:23:14
  */
 import { createRouter, createWebHistory } from "vue-router";
 import HelloWorldVue from "@/views/basic/HelloWorld.vue";
@@ -68,6 +68,11 @@ const router = createRouter({
           name: "MarkDown编辑器",
           component: () => import("@/views/exercise/MarkDown.vue"),
         },
+        {
+          path: 'get-data',
+          name: "获取数据",
+          component:()=>import("@/views/exercise/GetData.vue")
+        }
       ],
     },
   ],
