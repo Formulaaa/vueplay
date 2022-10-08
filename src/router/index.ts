@@ -4,11 +4,11 @@
  * @Author: congsir
  * @Date: 2022-09-09 11:52:35
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-10-08 14:20:34
+ * @LastEditTime: 2022-10-08 15:31:30
  */
 import { createRouter, createWebHistory } from "vue-router";
 import HelloWorldVue from "@/views/basic/HelloWorld.vue";
-import { UserOutlined } from "@ant-design/icons-vue";
+import { UserOutlined, HeatMapOutlined } from "@ant-design/icons-vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -52,8 +52,22 @@ const router = createRouter({
         {
           path: "easy-component",
           name: "简单组件",
-          component:()=>import("@/views/basic/FatherComponent.vue")
-        }
+          component: () => import("@/views/basic/FatherComponent.vue"),
+        },
+      ],
+    },
+    {
+      path: "/exercise",
+      name: "实战演练",
+      meta: {
+        icon: HeatMapOutlined,
+      },
+      children: [
+        {
+          path: "mark-down",
+          name: "MarkDown编辑器",
+          component: () => import("@/views/exercise/MarkDown.vue"),
+        },
       ],
     },
   ],
