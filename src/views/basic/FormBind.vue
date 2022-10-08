@@ -4,7 +4,7 @@
  * @Author: congsir
  * @Date: 2022-09-17 17:59:25
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-10-07 23:06:37
+ * @LastEditTime: 2022-10-08 09:11:29
 -->
 <template>
     <a-form :model="formData" autocomplete="off" name="user-form" ref="formRef" :label-col="{ span: 3}"
@@ -66,6 +66,25 @@
             </a-rate>
         </a-form-item>
 
+        <a-form-item label="滑动条" name="slider">
+            <a-slider v-model:value="formData.slider" :marks="marks" included range>
+                <template #mark="{label,point}">
+                    <template v-if="point == 100">
+                        <strong>{{label}}</strong>
+                    </template>
+                    <template v-else>
+                        {{label}}
+                    </template>
+                </template>
+            </a-slider>
+        </a-form-item>
+
+        <a-form-item label="文件上传" name="upload">
+            <a-upload-dragger v-model:fileList="formData.upload" @change="handleChange" multiple>
+                <inbox-outlined></inbox-outlined>
+                拖拽文件到此区域内上传文件
+            </a-upload-dragger>
+        </a-form-item>
         <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
             <a-button type="primary" html-type="submit">提交</a-button>
         </a-form-item>
@@ -73,11 +92,14 @@
 </template>
 
 <script setup lang="ts">
-import { UserOutlined,HeartFilled } from '@ant-design/icons-vue';
+import { UserOutlined, HeartFilled, InboxOutlined } from '@ant-design/icons-vue';
 import { reactive, ref } from 'vue';
 import type { FormInstance, CascaderProps } from 'ant-design-vue'
 import type { Dayjs } from 'dayjs'
 import dayjs from 'dayjs';
+import { message } from 'ant-design-vue';
+import 'ant-design-vue/es/message/style/css';
+import type { UploadChangeParam } from 'ant-design-vue'
 
 
 dayjs.locale("zhCN")
@@ -92,7 +114,9 @@ interface Form {
     checkbox: string[],
     cascader: string,
     mention: string,
-    rate: number
+    rate: number,
+    slider: [number, number],
+    upload: string[]
 }
 // 定义多选选项数据接口
 interface Options {
@@ -117,16 +141,18 @@ const formData = reactive<Form>({
     checkbox: [],
     cascader: '',
     mention: '',
-    rate: 3
+    rate: 3,
+    slider: [0, 30],
+    upload: []
 });
 // 定义多选框
-const options: Options[] = [
+const options = ref<Options[]>([
     { label: 'Apple', value: 'Apple' },
     { label: 'Pear', value: 'Pear' },
     { label: 'Orange', value: 'Orange', disabled: true },
-];
+]);
 // 定义级联选择器
-const cascaderOptions: CascaderProps['options'] = [
+const cascaderOptions = ref<CascaderProps['options']>([
     {
         value: 'zhejiang',
         label: 'Zhejiang',
@@ -158,10 +184,10 @@ const cascaderOptions: CascaderProps['options'] = [
             }
         ]
     }
-];
+]);
 
 // 定义提及@
-const mentionOptions: Options[] = [
+const mentionOptions = ref<Options[]>([
     {
         value: 'afc163',
         label: 'afc163',
@@ -186,8 +212,31 @@ const mentionOptions: Options[] = [
         value: 'にほんご',
         label: 'にほんご',
     },
-]
+]);
+// 定义滑动条标签
+const marks = ref<Record<number, any>>({
+    0: '0℃',
+    30: '30℃',
+    50: '50℃',
+    100: {
+        style: {
+            color: "red"
+        },
+        label: "100℃"
+    }
+});
 
+const handleChange = (info: UploadChangeParam) => {
+    const status = info.file.status;
+    if (status !== 'uploading') {
+        console.log(info.file, info.fileList);
+    }
+    if (status === 'done') {
+        message.success(`${info.file.name}上传完毕！`);
+    } else if (status === 'error') {
+        message.error(`${info.file.name}上传失败！`);
+    }
+}
 </script>
 
 <style scoped>
