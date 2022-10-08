@@ -4,7 +4,7 @@
  * @Author: congsir
  * @Date: 2022-09-09 11:52:35
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-09-17 18:02:32
+ * @LastEditTime: 2022-10-08 14:20:34
  */
 import { createRouter, createWebHistory } from "vue-router";
 import HelloWorldVue from "@/views/basic/HelloWorld.vue";
@@ -49,6 +49,11 @@ const router = createRouter({
           name: "表单绑定",
           component: () => import("@/views/basic/FormBind.vue"),
         },
+        {
+          path: "easy-component",
+          name: "简单组件",
+          component:()=>import("@/views/basic/FatherComponent.vue")
+        }
       ],
     },
   ],

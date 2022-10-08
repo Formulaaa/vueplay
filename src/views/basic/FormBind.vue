@@ -4,11 +4,11 @@
  * @Author: congsir
  * @Date: 2022-09-17 17:59:25
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-10-08 09:11:29
+ * @LastEditTime: 2022-10-08 13:55:48
 -->
 <template>
     <a-form :model="formData" autocomplete="off" name="user-form" ref="formRef" :label-col="{ span: 3}"
-        :wrapper-col="{ span: 8 }" layout="vertical">
+        :wrapper-col="{ span: 10 }" layout="vertical">
         <a-form-item label="姓名" name="name" :rules="[{ required: true, message: '请输入姓名' }]">
             <a-input v-model:value="formData.name" autofocus>
                 <template #prefix>
